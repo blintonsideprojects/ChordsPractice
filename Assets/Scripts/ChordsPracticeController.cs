@@ -29,6 +29,8 @@ public class ChordsPracticeController : MonoBehaviour
     public List<ChordBox> ChordBoxes;
 
     public TextMeshProUGUI CurrentChord;
+    public TextMeshProUGUI TotalTimeText;
+    public TextMeshProUGUI ChordTimeText;
 
     public ChordAudio ChordAudio;
     public AudioSource AudioSource;
@@ -175,6 +177,7 @@ public class ChordsPracticeController : MonoBehaviour
         SelectChord();
         minTime = Convert.ToInt32(MinimumTime.text.Substring(0, MinimumTime.text.Length - 1));
         maxTime = Convert.ToInt32(MaximumTime.text.Substring(0, MaximumTime.text.Length - 1));
+        _totalPracticeTime = Convert.ToInt32(OverallTime.text.Substring(0, OverallTime.text.Length - 1));
         _practiceStart = true;
 
 
