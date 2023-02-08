@@ -23,6 +23,7 @@ public class ChordsPracticeController : MonoBehaviour
 
     public Button ChordSelectionButton;
     public Button TimingSelectionButton;
+    public Button StopButton;
 
     public List<string> CurrentChords = new List<string>();
     public List<ChordBox> ChordBoxes;
@@ -52,8 +53,7 @@ public class ChordsPracticeController : MonoBehaviour
         CurrentlyPlaying.SetActive(false);
 
         ChordSelectionButton.onClick.AddListener(OnChordsSelected);
-
-   
+        StopButton.onClick.AddListener(OnStopButtonPressed);
     }
 
     void SelectChord()
@@ -104,6 +104,16 @@ public class ChordsPracticeController : MonoBehaviour
                 currentTime += Time.deltaTime;
             }
         }
+    }
+
+    public void OnStopButtonPressed()
+    {
+        _practiceStart = false;
+        currentTime = 0;
+        totalTime = 0;
+        CurrentChords.Clear();
+        CurrentlyPlaying.SetActive(false);
+        ChordsSelection.SetActive(true);
     }
 
     public AudioClip GetChordQualityClip(string chordString)
